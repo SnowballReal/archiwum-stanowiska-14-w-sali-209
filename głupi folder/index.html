@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8-BOM">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>tekst</label>
+    <input placeholder="piwo" type="text" id="input">
+    <br>
+    <button style="width: 211px;" onclick="dodajScierwo()">Dodej</button>
+    <br>
+    <ul id="ul">
+        
+    </ul>
+</body>
+</html>
+
+<script>
+    var ul = document.getElementById('ul');
+    var elements = 0;
+
+    function deleteScierwo(x){
+        var child = document.getElementById(x);
+        console.log(x);
+        console.log(child);
+        //ul.removeChild(child);
+    }
+
+    function dodajScierwo() {
+        var text = document.getElementById('input');
+        if (!(text.value == "")) {
+            elements ++;
+            var li = document.createElement('LI');
+            li.appendChild(document.createTextNode(text.value));
+            var id = ("element"+elements);
+            li.setAttribute("id",id);
+            var button = document.createElement('button');
+            button.innerHTML = "Usuń";
+            button.setAttribute("onClick", "deleteScierwo(li.id)");
+            li.appendChild(button);
+            ul.appendChild(li);
+            console.log("log", elements);
+            text.value = "";
+        }else{
+            console.log("KILL YOURSELF");
+        }
+        
+    }
+
+</script>
